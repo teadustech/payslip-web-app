@@ -2,7 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 // import {Form, Input} from "antd";
 import React, {useState} from "react";
-import {Form, Input, DatePicker} from "react";
+import {Form, Input} from "react";
+import { DatePicker } from 'antd';
+// import 'antd/dist/antd.css';
+
 import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
@@ -90,7 +93,8 @@ function App() {
       doc.save(`${employee.employee_name}.pdf`);
     });
   };
-  
+ 
+
 
   return (
     <div className="App">
@@ -126,11 +130,11 @@ function App() {
                         margin: "0 1px",
                         gap:"40",
                     }}>
-                        <a href="#" style={{marginLeft:"20px", color:'white'}}> Home</a>
+                        {/* <a href="#" style={{marginLeft:"20px", color:'white'}}> Home</a>
                         <a href="#" style={{marginLeft:"20px", color:'white'}}>Icon</a>
-                        {/* <a href="#" style={{marginLeft:"20px", color:'white'}}></a> */}
+                        {/* <a href="#" style={{marginLeft:"20px", color:'white'}}></a> 
                         <a href="#" style={{marginLeft: "50px",color:'white'
-                        }}>Login</a>
+                        }}>Login</a> */}
         
                     </div>
                 </nav>
@@ -139,40 +143,45 @@ function App() {
                 <br/><br/>
                 <div style={{
                   display:"flex",
+                  // width:'500px',
                   flexDirection:'column',
-                  justifyContent:"center",
+                  // justifyContent:"center",
+                  // align:'center',
+                  alignContent:'center',
                   alignItems:'center',
+                  // border:'1px solid red',
                   color:'#8d3caa',
-                  padding:'10px'
-                  // marginTop:'50px'
+                  padding:'10px',
+                  // gap:10
+                  
                 }}>
-                  <div>
-                    <label>Company Name: </label>
+                  <div style={{display:'flex', gap:20}}>
+                    <label style={{}}>Company Name: </label>
                     <input type="text" width="100px" onChange={(e) => setCompanyName(e.target.value)}/>
                   </div>
                   <br/>
                   <div>
-                    <label>Company ID: </label>
-                    <input type="number" width="100px" onChange={(e) => setCompanyID(e.target.value)} />
+                    <label style={{}}>Company ID: </label>
+                    <input  style={{marginLeft:'40px'}} type="number" width="100px" onChange={(e) => setCompanyID(e.target.value)} />
                   </div>
                   <br/>
                   <div>
-                    <label>Branch: </label>
-                    <input type="text" width="100px" onChange={(e) => setBranch(e.target.value)}/>
+                    <label style={{marginLeft:'40px'}}>Branch: </label>
+                    <input style={{marginLeft:'40px'}}type="text" width="100px" onChange={(e) => setBranch(e.target.value)}/>
                   </div>
                   <br/>
                   <div>
-                    <label>Payment Mode: </label>
-                    <input type="text" width="100px" onChange={(e) => setPaymentMode(e.target.value)}/>
+                    <label style={{marginLeft:'10px'}}>Payment Mode: </label>
+                    <input style={{marginLeft:'10px'}}type="text" width="100px" onChange={(e) => setPaymentMode(e.target.value)}/>
                   </div>
-                  <div>
-                    <label>Date: {setDate} </label>
-                    {/* <DatePicker  width="100px"/> */}
+                  <div style={{marginTop:'10px', }}>
+                    <label style={{marginLeft:'40px',  }}>Date: {setDate} </label>
+                    <DatePicker style={{marginLeft:'40px'}} width="120px"/>
                   </div>
                   <div style={{
                     marginTop:'20px'
                   }}>
-                  <button style={{color:'white', backgroundColor:'maroon', height:'30px', width:'100px', borderRadius:'5px'}}>Submit</button>
+                  {/* <button style={{color:'white', backgroundColor:'maroon', height:'30px', width:'100px', borderRadius:'5px'}} >Submit</button> */}
                   </div>
                 </div>
                 
@@ -191,11 +200,31 @@ function App() {
                 <button onClick={generatePayslipPDF} style={{color:'white', backgroundColor:'green', height:'30px', width:'100px', borderRadius:'5px'}}>Export as Pdf</button>
                 </div>
                 
-                <div>
                 
                 </div>
-                </div>
       </header>
+      <footer>
+        <div style={{
+            // zIndex:1000,
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+            backdropFilter: "blur(3px)",
+            boxShadow: "0px 3px 12px #b5e5e5",
+            backgroundColor:"#9c75aa",
+            height: "40px",
+            width: "100%",
+            position:"fixed",
+            // top: "20px",
+            marginTop:"70px",
+            transition: "1s",
+            boxSizing: "content-box",
+        }}>
+            <p style={{
+              color:'white'
+            }}>Copyright @ TeadusTech 2023</p>
+        </div>
+      </footer>
     </div>
   );
 }
